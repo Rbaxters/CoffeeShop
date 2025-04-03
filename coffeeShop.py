@@ -1,6 +1,9 @@
+queue = []  # Use a list to manage the queue
+
 class CoffeeShop:
     def __init__(self):
-        self.queue = []  # Use a list to manage the queue
+        # Assign the standalone queue to self.queue
+        self.queue = queue
 
     def takeOrder(self):
         #Take a new order from a customer.
@@ -46,7 +49,7 @@ class CoffeeShop:
         print(f"Order received: {orderName} for {name}")
 
     def serveCustomer(self):
-        #Serve the first customer in the queue.
+        #Serve the first customer in the queue
         if self.queue:
             customer = self.queue.pop(0)  # Remove the first customer from the queue
             print(f"Serving {customer['order']} to {customer['name']}")
