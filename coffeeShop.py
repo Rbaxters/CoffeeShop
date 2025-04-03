@@ -1,11 +1,9 @@
-from collections import deque
-
-class coffeeShop:
+class CoffeeShop:
     def __init__(self):
-        self.queue = deque()
+        self.queue = []  # Use a list to manage the queue
 
-    def takeOrder(self, name, order):
-        ##Take a new order from a customer.
+    def takeOrder(self):
+        #Take a new order from a customer.
         name = input("Please enter your name: ")
         print(f"Hello {name}, welcome to the Coffee Shop!")
         print("Menu:")
@@ -44,17 +42,19 @@ class coffeeShop:
             7: "Macchiato"
         }
         orderName = menuItems[order]
-        self.queue.append({"name": name, "order": orderName})
+        self.queue.append({"name": name, "order": orderName})  # Add the order to the queue
         print(f"Order received: {orderName} for {name}")
 
     def serveCustomer(self):
+        #Serve the first customer in the queue.
         if self.queue:
-            customer = self.queue.popleft()
+            customer = self.queue.pop(0)  # Remove the first customer from the queue
             print(f"Serving {customer['order']} to {customer['name']}")
         else:
             print("No customers in the queue!")
 
     def showQueue(self):
+        #Display the current queue.
         if self.queue:
             print("Current queue:")
             for customer in self.queue:
@@ -63,7 +63,7 @@ class coffeeShop:
             print("The queue is empty!")
 
 # Main function to run the Coffee Shop simulation
-shop = coffeeShop()
+shop = CoffeeShop()
 while True:
     print("\nWelcome to Ryan's Coffee Shop!")
     print("1. Take Order")
@@ -73,7 +73,7 @@ while True:
     choice = input("Please choose an option: ")
 
     if choice == "1":
-        shop.takeOrder("", "")
+        shop.takeOrder()
     elif choice == "2":
         shop.serveCustomer()
     elif choice == "3":
